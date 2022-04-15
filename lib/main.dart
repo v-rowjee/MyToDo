@@ -1,14 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mytodo/authentication_service.dart';
 import 'package:mytodo/pages/homePage.dart';
 import 'package:mytodo/pages/loginPage.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
+  //firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  //appbar
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.black54,
+    )
+  );
+
+  //runApp
   runApp(const MyApp());
 }
 

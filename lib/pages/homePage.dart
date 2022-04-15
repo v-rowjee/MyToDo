@@ -1,33 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mytodo/authentication_service.dart';
-import 'package:mytodo/pages/loginPage.dart';
 import 'package:mytodo/widgets/appDrawerHeader.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-/*
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("HOME"),
-            ElevatedButton(
-              onPressed: () {
-                context.read<AuthenticationService>().signOut();
-              },
-              child: Text("Sign out"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-*/
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

@@ -47,7 +47,6 @@ class LoginPage extends StatelessWidget {
                       email: emailController.text.trim(),
                       password: passwordController.text.trim(),
                     );
-                // Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
               },
               child: const Text("Sign in"),
             ),
