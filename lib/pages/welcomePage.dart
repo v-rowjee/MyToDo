@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mytodo/pages/loginPage.dart';
 import 'package:mytodo/pages/registerPage.dart';
 import 'package:mytodo/widgets/appBody.dart';
-import 'package:provider/provider.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mytodo/pages/homePage.dart';
 import 'package:mytodo/pages/loginPage.dart';
-import 'package:provider/provider.dart';
 
 Future<void> main() async {
   //firebase
@@ -22,15 +21,12 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-final navigatorKey = GlobalKey<NavigatorState>();
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: navigatorKey,
         title: 'Flutter Login',
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -60,22 +56,5 @@ class MainPage extends StatelessWidget {
         }
       }
     );
-  }
-}
-
-
-class AuthenticationWrapper extends StatelessWidget {
-  const AuthenticationWrapper({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
-
-    if (firebaseUser != null) {
-      return HomePage();
-    }
-    else {
-      return LoginPage();
-    }
   }
 }
