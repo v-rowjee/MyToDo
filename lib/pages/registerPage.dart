@@ -1,9 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mytodo/authentication_service.dart';
 import 'package:mytodo/pages/loginPage.dart';
 import 'package:mytodo/pages/welcomePage.dart';
 import 'package:mytodo/widgets/appBody.dart';
-import 'package:provider/provider.dart';
 
 class RegisterPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -45,14 +44,7 @@ class RegisterPage extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  context.read<AuthenticationService>().signUp(
-                        email: emailController.text.trim(),
-                        password: passwordController.text.trim(),
-                      );
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
-                },
+                onPressed: signUp,
                 child: const Text("Register"),
               ),
             ),
@@ -67,6 +59,13 @@ class RegisterPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Future signUp() async {
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
     );
   }
 }

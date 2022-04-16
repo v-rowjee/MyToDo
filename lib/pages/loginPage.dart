@@ -1,11 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mytodo/authentication_service.dart';
-import 'package:mytodo/pages/homePage.dart';
 import 'package:mytodo/pages/registerPage.dart';
 import 'package:mytodo/pages/welcomePage.dart';
 import 'package:mytodo/widgets/appBody.dart';
-import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -44,17 +41,7 @@ class LoginPage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                context.read<AuthenticationService>().signIn(
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                    );
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context){
-                      final firebaseUser = context.watch<User?>();
-                      return firebaseUser != null ? HomePage() : LoginPage();
-                    }));
-              },
+              onPressed: signIn,
               child: const Text("Sign in"),
             ),
           ),
@@ -69,5 +56,16 @@ class LoginPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim()
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
   }
 }
