@@ -11,53 +11,49 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBody(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back_ios_rounded),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.arrow_back_ios_rounded),
+            onPressed: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const WelcomePage())),
+          ),
+          const SizedBox(height: 30),
+          const Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: Text('Create \nAccount',
+                style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
+          ),
+          const SizedBox(height: 80),
+          TextField(
+            controller: emailController,
+            decoration: const InputDecoration(
+                labelText: "Email", border: OutlineInputBorder()),
+          ),
+          const SizedBox(height: 20.0),
+          TextField(
+            controller: passwordController,
+            decoration: const InputDecoration(
+                labelText: "Password", border: OutlineInputBorder()),
+          ),
+          const SizedBox(height: 40.0),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: signUp,
+              child: const Text("Register"),
+            ),
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton(
               onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const WelcomePage())),
+                  MaterialPageRoute(builder: (context) => LoginPage())),
+              child: const Text("Login"),
             ),
-            const SizedBox(height: 30),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Text('Create \nAccount',
-                  style:
-                      TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)),
-            ),
-            const SizedBox(height: 80),
-            TextField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                  labelText: "Email", border: OutlineInputBorder()),
-            ),
-            const SizedBox(height: 20.0),
-            TextField(
-              controller: passwordController,
-              decoration: const InputDecoration(
-                  labelText: "Password", border: OutlineInputBorder()),
-            ),
-            const SizedBox(height: 40.0),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: signUp,
-                child: const Text("Register"),
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginPage())),
-                child: const Text("Login"),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

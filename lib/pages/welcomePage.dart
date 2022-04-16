@@ -1,46 +1,44 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mytodo/pages/loginPage.dart';
-import 'package:mytodo/pages/registerPage.dart';
-import 'package:mytodo/widgets/appBody.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AppBody(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 25),
-              child: const Text(
-                'Welcome to \nMyToDo',
-                style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const Text(
-              'Create your new account with your personal information or login with an existing account to access your to-do list.',
-              style: TextStyle(height: 1.5),
-            ),
-            const SizedBox(height: 225),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage())),
-                  child: const Text('Sign In')),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterPage())),
-                  child: const Text('Register')),
-            )
-          ]),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/bg.png'),
+                  fit: BoxFit.cover,
+                  opacity: 0.05)),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 25),
+                    child: const Text(
+                      'Welcome to \nMyToDo',
+                      style: TextStyle(
+                          fontSize: 40.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const Text(
+                    'Create your new account with your personal information or login with an existing account to access your to-do list.',
+                    style: TextStyle(height: 1.5),
+                  ),
+                ]),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Icon(Icons.arrow_forward),
+        ),
+      ),
     );
   }
 }
