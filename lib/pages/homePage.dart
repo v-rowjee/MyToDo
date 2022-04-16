@@ -47,10 +47,11 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
       ),
       drawer: Drawer(
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const AppDrawerHeader(),
-            const SizedBox(height: 340),
+            const Expanded(child: SizedBox()),
             ListTile(
               title: TextButton(
                   child: const Text('Logout'),
