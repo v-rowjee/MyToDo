@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mytodo/authentication_service.dart';
+import 'package:mytodo/pages/homePage.dart';
 import 'package:mytodo/pages/registerPage.dart';
 import 'package:mytodo/pages/welcomePage.dart';
 import 'package:mytodo/widgets/appBody.dart';
@@ -47,6 +49,11 @@ class LoginPage extends StatelessWidget {
                       email: emailController.text.trim(),
                       password: passwordController.text.trim(),
                     );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context){
+                      final firebaseUser = context.watch<User?>();
+                      return firebaseUser != null ? HomePage() : LoginPage();
+                    }));
               },
               child: const Text("Sign in"),
             ),

@@ -50,6 +50,8 @@ class RegisterPage extends StatelessWidget {
                         email: emailController.text.trim(),
                         password: passwordController.text.trim(),
                       );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginPage()));
                 },
                 child: const Text("Register"),
               ),

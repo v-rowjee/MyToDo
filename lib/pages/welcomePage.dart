@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mytodo/pages/homePage.dart';
 import 'package:mytodo/pages/loginPage.dart';
 import 'package:mytodo/pages/registerPage.dart';
 import 'package:mytodo/widgets/appBody.dart';
@@ -11,8 +10,6 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
-
     return AppBody(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,20 +31,14 @@ class WelcomePage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context){
-                        final firebaseUser = context.watch<User?>();
-                        return firebaseUser != null ? HomePage() : LoginPage();
-                      })),
+                      MaterialPageRoute(builder: (context) => LoginPage())),
                   child: const Text('Sign In')),
             ),
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
                   onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context){
-                        final firebaseUser = context.watch<User?>();
-                        return firebaseUser != null ? HomePage() : RegisterPage();
-                      })),
+                      MaterialPageRoute(builder: (context) => RegisterPage())),
                   child: const Text('Register')),
             )
           ]),
