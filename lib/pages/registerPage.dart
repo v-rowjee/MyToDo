@@ -1,11 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mytodo/pages/loginPage.dart';
 import 'package:mytodo/pages/welcomePage.dart';
 import 'package:mytodo/widgets/appBody.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  final Function() onClickedLogin;
+  RegisterPage({Key? key, required this.onClickedLogin}) : super(key: key);
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
 
   @override
@@ -48,8 +56,7 @@ class RegisterPage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: OutlinedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LoginPage())),
+              onPressed: widget.onClickedLogin,
               child: const Text("Login"),
             ),
           ),
