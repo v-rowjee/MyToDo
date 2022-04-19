@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mytodo/pages/homePage.dart';
+import 'package:mytodo/pages/home_page.dart';
 import 'package:mytodo/pages/loginPage.dart';
 import 'package:mytodo/pages/registerPage.dart';
 
-Future<void> main() async {
+Future main() async {
   //firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
